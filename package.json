@@ -1,0 +1,22 @@
+{
+  "name": "helium",
+  "version": "0.0.1",
+  "description": "Browser compatible In-process name service",
+  "main": "build/npm/src/index.js",
+  "scripts": {
+    "test": "p9k test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dashkite/helium.git"
+  },
+  "author": "Dan Yoder",
+  "bugs": {
+    "url": "https://github.com/dashkite/helium/issues"
+  },
+  "homepage": "https://github.com/dashkite/helium#readme",
+  "devDependencies": {
+    "panda-9000": "^5.0.2",
+    "panda-builder": "^4.0.13"
+  }
+}
