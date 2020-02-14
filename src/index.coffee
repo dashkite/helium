@@ -1,9 +1,8 @@
-registry = {}
+# singleton
+$ = {}
 
-register = (directory) ->
-  for key, value of directory
-    registry[key] = value
+export default
 
-lookup = (key) -> registry[key]
+  add: (directory) -> $[key] = value for key, value of directory; directory
 
-export {register, lookup}
+  get: (key) -> $[key]

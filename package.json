@@ -1,5 +1,5 @@
 {
-  "name": "helium",
+  "name": "@dashkite/helium",
   "version": "0.0.1",
   "description": "Browser compatible In-process name service",
   "main": "build/npm/src/index.js",
@@ -11,6 +11,7 @@
     "url": "git+https://github.com/dashkite/helium.git"
   },
   "author": "Dan Yoder",
+  "license": "SEE LICENSE IN LICENSE.md",
   "bugs": {
     "url": "https://github.com/dashkite/helium/issues"
   },
