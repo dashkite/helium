@@ -5,7 +5,7 @@ Share values across modules without polluting the global scope.
 ```coffee
 original = foo: "bar"
 
-Registry.add test: original
+Registry.set test: original
 
 returned = Registry.get "test"
 ```
