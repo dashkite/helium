@@ -2,9 +2,10 @@
   "name": "@dashkite/helium",
   "version": "0.0.1",
   "description": "Browser compatible In-process name service",
-  "main": "build/npm/src/index.js",
+  "main": "build/src/index.js",
+  "coffee:main": "src/index.coffee",
   "scripts": {
-    "test": "p9k test"
+    "test": "genie test"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,9 @@
   },
   "homepage": "https://github.com/dashkite/helium#readme",
   "devDependencies": {
-    "panda-9000": "^5.0.2",
-    "panda-builder": "^4.0.13"
-  }
+    "@dashkite/brick": "0.0.3",
+    "@dashkite/genie": "0.0.1",
+    "amen": "^3.0.0"
+  },
+  "dependencies": {}
 }

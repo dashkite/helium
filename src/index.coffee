@@ -3,6 +3,8 @@ $ = {}
 
 export default
 
-  add: (directory) -> $[key] = value for key, value of directory; directory
+  set: (directory) ->
+    $[key] = value for key, value of directory; directory
+    undefined
 
   get: (key) -> $[key]
