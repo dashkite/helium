@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Browser compatible In-process name service",
   "main": "build/src/index.js",
-  "coffee:main": "src/index.coffee",
+  "main:coffee": "src/index.coffee",
   "scripts": {
     "test": "genie test"
   },
