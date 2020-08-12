@@ -1,6 +1,6 @@
 {
   "name": "@dashkite/helium",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Browser compatible In-process name service",
   "main": "build/src/index.js",
   "main:coffee": "src/index.coffee",
