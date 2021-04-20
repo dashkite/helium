@@ -2,8 +2,15 @@
   "name": "@dashkite/helium",
   "version": "0.1.0",
   "description": "Browser compatible In-process name service",
-  "main": "build/src/index.js",
+  "main": "build/node/src/index.js",
   "coffee:main": "src/index.coffee",
+  "exports": {
+    "import": "build/import/src/index.js",
+    "node": "build/node/src/index.js"
+  },
+  "files": [
+    "build"
+  ],
   "scripts": {
     "test": "genie test"
   },
