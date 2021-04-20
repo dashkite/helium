@@ -1,5 +1,11 @@
 # singleton
-$ = {}
+$ = if window?
+  window.__helium = {}
+else if global?
+  global.__helium = {}
+else
+  console.warn "helium: no shared context available"
+  {}
 
 export default
 

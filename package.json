@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/dashkite/helium#readme",
   "devDependencies": {
-    "@dashkite/brick": "0.0.3",
-    "@dashkite/genie": "0.0.1",
+    "@babel/core": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "@dashkite/genie": "0.1.0",
+    "@dashkite/joy": "^0.1.0",
+    "@dashkite/masonry": "^0.7.0",
     "amen": "^3.0.0"
-  },
-  "dependencies": {}
+  }
 }
