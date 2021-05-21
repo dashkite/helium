@@ -29,8 +29,8 @@
     "@babel/preset-env": "^7.14.2",
     "@dashkite/genie": "^0.3.3",
     "@dashkite/genie-presets": "^0.1.5",
-    "@dashkite/joy": "^0.3.0",
-    "@dashkite/masonry": "^0.10.2",
+    "@dashkite/joy": "^0.3.3",
+    "@dashkite/masonry": "^0.10.3",
     "amen": "^3.0.0"
   }
 }
