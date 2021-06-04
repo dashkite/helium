@@ -18,27 +18,10 @@ presets:
           glob:
             - test/**/*.coffee
             - '!test/client/**/*.coffee'
-        - preset: browser
-          glob:
-            - src/**/*.coffee
-        - preset: browser
-          glob:
-            - test/client/**/*.coffee
-          options:
-            mode: debug
-        - preset: node
-          glob:
-            - test/**/*.coffee
-            - '!test/client/**/*.coffee'
-        - preset: browser
-          glob:
-            - src/**/*.coffee
-        - preset: browser
-          glob:
-            - test/client/**/*.coffee
-          options:
-            mode: debug
-        - preset: node
-          glob:
-            - test/**/*.coffee
-            - '!test/client/**/*.coffee'
+  browser:
+    directory: .
+    fallback: build/browser/test/index.html
+  pug:
+    import-map:
+      '@dashkite/amen': latest
+      '@dashkite/assert': latest
