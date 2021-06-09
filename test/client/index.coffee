@@ -1,14 +1,8 @@
 import assert from "@dashkite/assert"
-import * as a from "@dashkite/amen"
-import Registry from "@dashkite/helium"
+import { test } from "@dashkite/amen"
 
 do ->
 
-  window.__test = await a.test "Helium", [
+  window.__test = await do ->
 
-    a.test "add/set", ->
-      original = foo: "bar"
-      Registry.set test: original
-      returned = Registry.get "test"
-      assert.equal original, returned
-  ]
+    test "In-Browser Tests", []
