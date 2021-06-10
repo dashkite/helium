@@ -13,16 +13,19 @@ export default
 
   set: (dictionary) ->
     for key, value of dictionary
-      if $.has key
-        _value = $.get key
-        if _value.constructor == Resolver
-          _value.resolve value
+      old = $.get key if $.has key
+      # set value before resolving promise,
+      # since that could lead to calling get
       $.set key, value
-
+      old.resolve value if old?.constructor == Resolver
+    undefined
 
   get: (key) ->
     if $.has key
-      $.get key
+      if (value = $.get key)?.constructor == Resolver
+        value.promise
+      else
+        value
     else
       resolver = Resolver.create()
       $.set key, resolver
