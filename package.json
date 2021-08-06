@@ -1,6 +1,6 @@
 {
   "name": "@dashkite/helium",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Browser compatible In-process name service",
   "homepage": "https://github.com/dashkite/helium#readme",
   "bugs": {
