@@ -11,16 +11,12 @@ do browse ({browser, port}) ->
   # just give it a minute in case files haven't been written out yet
   await sleep 1000
 
-  print await test "Tests", [
-
-    await do m.launch browser, [
-      m.page
-      m.goto "http://localhost:#{port}/"
-      m.waitFor -> window.__test?
-      m.evaluate -> window.__test
-      k.get
-    ]
-
+  print await do m.launch browser, [
+    m.page
+    m.goto "http://localhost:#{port}/"
+    m.waitFor -> window.__test?
+    m.evaluate -> window.__test
+    k.get
   ]
 
   process.exit if success then 0 else 1
