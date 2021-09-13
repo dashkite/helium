@@ -19,6 +19,9 @@ presets:
             - test/**/*.coffee
             - '!test/client/**/*.coffee'
   browser:
+    esm:
+      directories:
+        - .
     directory: .
     fallback: ./build/browser/test/client/index.html
     logging: false
