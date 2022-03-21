@@ -2,6 +2,13 @@
   "name": "@dashkite/helium",
   "version": "0.4.3",
   "description": "Browser compatible In-process name service",
+  "exports": {
+    ".": {
+      "browser": "./build/browser/src/index.js",
+      "node": "./build/node/src/index.js"
+    }
+  },
+  "main": "build/node/src/index.js",
   "homepage": "https://github.com/dashkite/helium#readme",
   "bugs": {
     "url": "https://github.com/dashkite/helium/issues"
@@ -12,11 +19,6 @@
   },
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Dan Yoder",
-  "exports": {
-    ".": {
-      "browser": "./build/browser/src/index.js"
-    }
-  },
   "files": [
     "build/browser/src"
   ],

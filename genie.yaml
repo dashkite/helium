@@ -14,10 +14,10 @@ presets:
             - test/client/**/*.coffee
           options:
             mode: debug
+      node:
         - preset: node
           glob:
-            - test/**/*.coffee
-            - '!test/client/**/*.coffee'
+            - '{src,test}/**/*.coffee'
   browser:
     esm:
       directories:
