@@ -19,10 +19,9 @@ presets:
           glob:
             - test/**/*.coffee
             - '!test/client/**/*.coffee'
-      node:
         - preset: node
           glob:
-            - '{src,test}/**/*.coffee'
+            - 'src/**/*.coffee'
   browser:
     esm:
       directories:
