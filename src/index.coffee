@@ -23,7 +23,7 @@ get = generic
   name: "get"
   description: "Get a value from the registry with a (possibly compound) key."
 
-generic get, T.isString, (key) ->
+generic get, T.isString, ( key ) ->
   if $.has key
     if (value = $.get key)?.constructor == Resolver
       value.promise
@@ -34,22 +34,20 @@ generic get, T.isString, (key) ->
     $.set key, resolver
     resolver.promise
 
-generic get, isCompoundKey, (key) ->
+generic get, isCompoundKey, ( key ) ->
   get Tx.split ".", key
 
-generic get, T.isArray, ([key, keys...]) ->
-  It.reduce (Fn.flip Obj.get), (await get key), keys
+generic get, T.isArray, ([ key, keys... ]) ->
+  It.reduce ( Fn.flip Obj.get ), ( await get key ), keys
 
-export default
+set = ( dictionary ) ->
+  for key, value of dictionary
+    old = $.get key if $.has key
+    # set value before resolving promise,
+    # since that could lead to calling get
+    $.set key, value
+    old.resolve value if old?.constructor == Resolver
+  undefined
 
-  get: get
-
-  set: (dictionary) ->
-    for key, value of dictionary
-      old = $.get key if $.has key
-      # set value before resolving promise,
-      # since that could lead to calling get
-      $.set key, value
-      old.resolve value if old?.constructor == Resolver
-    undefined
+export default { get, set }
 
