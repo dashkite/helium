@@ -1,53 +1,32 @@
-import * as Fn from "@dashkite/joy/function"
-import { generic } from "@dashkite/joy/generic"
-import * as T from "@dashkite/joy/type"
-import * as Obj from "@dashkite/joy/object"
-import * as It from "@dashkite/joy/iterable"
-import * as Tx from "@dashkite/joy/text"
+import Value from "./value"
 
-# singleton
-$ = globalThis["@dashkite/helium"] ?= new Map
+$ = globalThis[ "@dashkite/helium" ] ?= new Map
 
-class Resolver
-  @create: -> new @
-  constructor: ->
-    self = @
-    @promise = new Promise (resolve, reject) ->
-      self.resolve = resolve
-      self.reject = reject
+Registry =
 
+  get: ( key ) ->
+    do ({ value } = {}) ->
+      if ( $.has key )
+        value = $.get key
+      else
+        value = Value.promise()
+        $.set key, value
+      value.get()
 
-isCompoundKey = Tx.isMatch /\./
+  has: ( key ) -> $.has key
 
-get = generic
-  name: "get"
-  description: "Get a value from the registry with a (possibly compound) key."
-
-generic get, T.isString, ( key ) ->
-  if $.has key
-    if (value = $.get key)?.constructor == Resolver
-      value.promise
+  set: ( key, _value ) ->
+    if ( $.has key )
+      value = $.get key
+      value.set _value
     else
-      value
-  else
-    resolver = Resolver.create()
-    $.set key, resolver
-    resolver.promise
+      $.set key, Value.from _value
+    _value
 
-generic get, isCompoundKey, ( key ) ->
-  get Tx.split ".", key
+  observe: ( key, handler ) ->
+    value = $.get key
+    value.observe handler
+    handler
 
-generic get, T.isArray, ([ key, keys... ]) ->
-  It.reduce ( Fn.flip Obj.get ), ( await get key ), keys
-
-set = ( dictionary ) ->
-  for key, value of dictionary
-    old = $.get key if $.has key
-    # set value before resolving promise,
-    # since that could lead to calling get
-    $.set key, value
-    old.resolve value if old?.constructor == Resolver
-  undefined
-
-export default { get, set }
+export default Registry
 
