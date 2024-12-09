@@ -23,6 +23,4 @@ class Value
     handler @value for handler in @handlers
     @value
 
-  observe: ( handler ) -> @handlers.push handler
-
 export default Value
