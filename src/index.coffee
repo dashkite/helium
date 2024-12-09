@@ -23,10 +23,5 @@ Registry =
       $.set key, Value.from _value
     _value
 
-  observe: ( key, handler ) ->
-    value = $.get key
-    value.observe handler
-    handler
-
 export default Registry
 
