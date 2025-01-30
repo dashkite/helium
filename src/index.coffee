@@ -15,13 +15,16 @@ Registry =
 
   has: ( key ) -> $.has key
 
-  set: ( key, _value ) ->
+  hasValue: ( key ) -> ( $.get key )?.value?
+
+  set: ( key, value ) ->
     if ( $.has key )
-      value = $.get key
-      value.set _value
+      ( $.get key ).set value
     else
-      $.set key, Value.from _value
-    _value
+      $.set key, Value.from value
+      value
+
+
 
 export default Registry
 

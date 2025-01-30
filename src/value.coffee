@@ -11,16 +11,14 @@ class Value
       self.resolve = resolve
     self
   
-  constructor: -> 
-    @handlers = []
-
   get: -> @promise ? @value
 
   set: ( @value ) ->
     if @promise?
       @resolve @value
       { @resolve, @promise } = {}
-    handler @value for handler in @handlers
     @value
+
+      
 
 export default Value

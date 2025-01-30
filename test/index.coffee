@@ -1,22 +1,40 @@
+import assert from "@dashkite/assert"
 import { test, success } from "@dashkite/amen"
 import print from "@dashkite/amen-console"
-import { sleep } from "@dashkite/joy"
 
-import * as k from "@dashkite/katana"
-import * as m from "@dashkite/mimic"
-import browse from "@dashkite/genie-presets/browser"
+import $ from "../src"
 
-do browse ({browser, port}) ->
+do ->
 
-  # just give it a minute in case files haven't been written out yet
-  await sleep 1000
+  print await test "Helium", [
 
-  print await do m.launch browser, [
-    m.page
-    m.goto "http://localhost:#{port}/"
-    m.waitFor -> window.__test?
-    m.evaluate -> window.__test
-    k.get
+    test "get", ->
+      assert ( $.get "foo" ).then?
+
+    test "set", ->
+      $.set "foo", "bar"
+      assert.equal "bar", await $.get "foo"
+
+    test "has", ->
+      assert $.has "foo"
+
+    test "hasValue", [
+
+      test "no value", ->
+        assert ! $.hasValue "a"
+
+      test "promised value", ->
+        $.get "a"
+        assert ! $.hasValue "a"
+
+      test "a value", ->
+        $.set "b", 1
+        assert.equal $.hasValue "b"
+
+    ]
+      
+
   ]
+
 
   process.exit if success then 0 else 1
