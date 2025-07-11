@@ -24,7 +24,8 @@
   ],
   "scripts": {
     "build": "genie build",
-    "test": "genie test"
+    "test": "genie test",
+    "release": "genie release"
   },
   "devDependencies": {
     "@dashkite/amen": "^0.1.2",
